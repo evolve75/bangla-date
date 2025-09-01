@@ -1,0 +1,8 @@
+[project]
+name = "bangla-date"
+version = "0.1.0"
+description = "Displays the current Bengali date."
+authors = [{name = "Anupam Sengupta", email = "anupamsg@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []

@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "datetime",
+# ]
+# ///
+
 #
-# bangla-calendar
+# bangla-date
 #
 # Author: Anupam Sengupta (anupamsg@gmail.com)
 #
-# Copyright (C) 2024
+# Copyright (C) 2024, 2025
 
 from datetime import datetime
 
