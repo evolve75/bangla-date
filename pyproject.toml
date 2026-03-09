@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bangla-date"
-version = "0.1.0"
+version = "1.0.0"
 description = "Convert Gregorian dates to Bangla dates and print the current Bangla date."
 authors = [{name = "Anupam Sengupta", email = "anupamsg@gmail.com"}]
 readme = "README.md"
