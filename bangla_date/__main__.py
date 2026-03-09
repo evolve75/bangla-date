@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# 
+#
 # SPDX-License-Identifier: MIT
-# 
-# Copyright (c) 2024-2026 Anupam Sengupta
-# 
+#
+# Copyright (C) 2026 Anupam Sengupta <anupamsg@gmail.com>
+#
 # Command-line entrypoint for printing today's Bangla date.
 
 from __future__ import annotations

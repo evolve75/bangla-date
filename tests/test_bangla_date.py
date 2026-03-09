@@ -1,8 +1,8 @@
-# 
+#
 # SPDX-License-Identifier: MIT
-# 
-# Copyright (c) 2024-2026 Anupam Sengupta
-# 
+#
+# Copyright (C) 2026 Anupam Sengupta <anupamsg@gmail.com>
+#
 # Tests for Bangla date conversion helpers and CLI entrypoints.
 
 from __future__ import annotations
