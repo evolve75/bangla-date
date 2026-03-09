@@ -1,6 +1,6 @@
 ## বাংলা তারিখ রূপান্তরকারী (Bangla Date)
 
-এই পাইথন স্ক্রিপ্টটি বর্তমান গ্রেগরিয়ান তারিখকে বাংলা তারিখে রূপান্তর করে এবং সংশ্লিষ্ট ঋতুসহ বাংলা সংখ্যায় প্রদর্শন করে।
+এই প্রজেক্টটি বর্তমান গ্রেগরিয়ান তারিখকে বাংলা তারিখে রূপান্তর করে এবং সংশ্লিষ্ট ঋতুসহ বাংলা সংখ্যায় প্রদর্শন করে। এটি এখন একটি importable Python module এবং একটি সহজ CLI - দুটোই সরবরাহ করে।
 
 ### বৈশিষ্ট্যসমূহ
 
@@ -10,34 +10,62 @@
 
 ### প্রয়োজনীয়তা
 
-- Python 3.x
+- Python 3.13 বা নতুনতর
 
 ### ইনস্টলেশন
 
 1. এই রিপোজিটরি ক্লোন করুন বা স্ক্রিপ্টটি ডাউনলোড করুন।
-2.	আপনার সিস্টেমে পাইথন 3.x ইনস্টল করুন।
+2. আপনার সিস্টেমে Python 3.13+ ইনস্টল করুন।
+
+ঐচ্ছিকভাবে editable install করতে পারেন:
+
+```bash
+python3 -m pip install -e .
+```
 
 ### ব্যবহারবিধি
 
-1.	টার্মিনালে স্ক্রিপ্টের অবস্থানে যান।
-2.	নিচের কমান্ডটি চালান:
+1. টার্মিনালে প্রজেক্টের অবস্থানে যান।
+2. নিচের যেকোনো একটি কমান্ড চালান:
 
-        python bangla_date.py
+```bash
+python3 -m bangla_date
+```
 
+অথবা compatibility wrapper ব্যবহার করতে চাইলে:
 
-3.	স্ক্রিপ্টটি বর্তমান দিনের বাংলা তারিখ এবং ঋতু প্রদর্শন করবে।
+```bash
+python3 bangla-date.py
+```
+
+3. কমান্ডটি বর্তমান দিনের বাংলা তারিখ এবং ঋতু প্রদর্শন করবে।
 
 ### কাস্টম ইনপুট
 
-নির্দিষ্ট কোনো গ্রেগরিয়ান তারিখের বাংলা তারিখ জানতে চাইলে গ্রেগরিয়ান_থেকে_বাংলা_তারিখ ফাংশনটি ব্যবহার করতে পারেন। উদাহরণস্বরূপ:
+নির্দিষ্ট কোনো গ্রেগরিয়ান তারিখের বাংলা তারিখ জানতে চাইলে module থেকে helper function import করতে পারেন। উদাহরণস্বরূপ:
 
-    from datetime import datetime
+```python
+from datetime import datetime
 
-	# নির্দিষ্ট গ্রেগরিয়ান তারিখ
-    গ্রেগরিয়ান_তারিখ = datetime(2024, 11, 10)
-    বাংলা_দিন, বাংলা_মাস, বাংলা_বছর, বাংলা_ঋতু = গ্রেগরিয়ান_থেকে_বাংলা_তারিখ(গ্রেগরিয়ান_তারিখ)
+from bangla_date import gregorian_to_bangla_date
+from bangla_date import english_to_bangla_digits
 
-    print(f"{বাংলা_দিন} {বাংলা_মাস}, {বাংলা_বছর} বঙ্গাব্দ - ঋতু: {বাংলা_ঋতু}")
+# নির্দিষ্ট গ্রেগরিয়ান তারিখ
+gregorian_date = datetime(2024, 11, 10)
+bangla_day, bangla_month, bangla_year, bangla_season = gregorian_to_bangla_date(gregorian_date)
+
+print(
+    f"{english_to_bangla_digits(bangla_day)} {bangla_month}, "
+    f"{english_to_bangla_digits(bangla_year)} বঙ্গাব্দ - ঋতু: {bangla_season}"
+)
+```
+
+Bangla-named function গুলোও backward compatibility এর জন্য রাখা হয়েছে:
+
+```python
+from bangla_date import গ্রেগরিয়ান_থেকে_বাংলা_তারিখ
+from bangla_date import ইংরেজি_থেকে_বাংলা_সংখ্যা
+```
 
 ### অবদান
 

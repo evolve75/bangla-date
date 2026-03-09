@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2024-2026 Anupam Sengupta
 
-"""Compatibility wrapper for the Bangla date CLI."""
+"""Module runner for ``python -m bangla_date``."""
 
 from bangla_date import main
 
