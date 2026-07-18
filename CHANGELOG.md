@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## v1.0.1 - 2026-07-17
 
 - Removed td workflow state and standardized local agent guidance on `features/*` branches.
 
