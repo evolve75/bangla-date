@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+- Removed td workflow state and standardized local agent guidance on `features/*` branches.
+
 ## v1.0.0 - 2026-03-09
 
 - Refactored the project into an importable `bangla_date` module with a package CLI entrypoint.
