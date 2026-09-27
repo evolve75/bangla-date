@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## v2.0.2 - 2026-09-27
+
+### Added
+- Added a GitHub Actions workflow that verifies the build (lint, tests, and `uv build`), plus its status badge in the README.
+
+### Changed
+- Documented `uv tool install` and refreshed the README for accuracy.
+- Added a Poila Boishakh example output (1 Boishakh 1433, 15 April 2026).
+- Translated the "Formulas and provenance" section into Bengali.
+
 ## v2.0.1 - 2026-09-27
 
 ### Changed

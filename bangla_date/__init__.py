@@ -11,7 +11,7 @@ from datetime import date, datetime
 
 from bangla_date._drik import bangla_date_from_gregorian
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"
 
 BANGLA_MONTHS = [
     "বৈশাখ",
