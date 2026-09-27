@@ -1,6 +1,8 @@
 ## বাংলা তারিখ রূপান্তরকারী (Bangla Date)
 
 [![CI](https://github.com/evolve75/bangla-date/actions/workflows/ci.yml/badge.svg)](https://github.com/evolve75/bangla-date/actions/workflows/ci.yml)
+[![Publish to PyPI](https://github.com/evolve75/bangla-date/actions/workflows/publish.yml/badge.svg)](https://github.com/evolve75/bangla-date/actions/workflows/publish.yml)
+[![PyPI](https://img.shields.io/pypi/v/bangla-date.svg)](https://pypi.org/project/bangla-date/)
 
 এই প্রজেক্টটি গ্রেগরিয়ান তারিখকে বাংলা তারিখে রূপান্তর করে এবং সংশ্লিষ্ট ঋতুসহ বাংলা সংখ্যায় প্রদর্শন করে। এটি একটি importable Python module এবং একটি সহজ CLI - দুটোই সরবরাহ করে।
 
@@ -20,7 +22,19 @@
 
 ### ইনস্টলেশন
 
-`uv` দিয়ে CLI টুল হিসেবে সরাসরি ইনস্টল:
+PyPI থেকে সরাসরি ইনস্টল:
+
+```bash
+pip install bangla-date
+```
+
+`uv` দিয়ে CLI টুল হিসেবে PyPI থেকে ইনস্টল:
+
+```bash
+uv tool install bangla-date
+```
+
+সর্বশেষ (unreleased) সংস্করণ git থেকে সরাসরি ইনস্টল করতে চাইলে:
 
 ```bash
 uv tool install "git+https://github.com/evolve75/bangla-date"
