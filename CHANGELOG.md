@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## v2.0.0 - 2026-09-27
+
+Breaking change: Bangla date conversion results differ from v1.0.1 for the same
+Gregorian inputs, since month boundaries are now computed astronomically
+instead of read from a fixed table.
 
 ### Added
 - Added a West Bengal (Drik Siddhanta) calendar engine that determines solar months from the Sun's sidereal sign at local sunrise (reference location: Kolkata).
