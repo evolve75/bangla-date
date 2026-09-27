@@ -1,5 +1,7 @@
 ## বাংলা তারিখ রূপান্তরকারী (Bangla Date)
 
+*[Read this in English](README.en.md)*
+
 [![CI](https://github.com/evolve75/bangla-date/actions/workflows/ci.yml/badge.svg)](https://github.com/evolve75/bangla-date/actions/workflows/ci.yml)
 [![Publish to PyPI](https://github.com/evolve75/bangla-date/actions/workflows/publish.yml/badge.svg)](https://github.com/evolve75/bangla-date/actions/workflows/publish.yml)
 [![PyPI](https://img.shields.io/pypi/v/bangla-date.svg)](https://pypi.org/project/bangla-date/)
