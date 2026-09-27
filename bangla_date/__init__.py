@@ -11,7 +11,7 @@ from datetime import date, datetime
 
 from bangla_date._drik import bangla_date_from_gregorian
 
-__version__ = "2.0.2"
+__version__ = "2.0.3"
 
 BANGLA_MONTHS = [
     "বৈশাখ",
@@ -80,7 +80,7 @@ def format_bangla_date(gregorian_date: date | datetime) -> str:
 
 def format_current_bangla_date(now: datetime | None = None) -> str:
     """Format the Bangla date and season for the supplied datetime or now."""
-    return format_bangla_date(now or datetime.now())
+    return format_bangla_date(now if now is not None else datetime.now())
 
 
 __all__ = [

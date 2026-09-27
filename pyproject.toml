@@ -28,8 +28,10 @@ dependencies = []
 bangla-date = "bangla_date.__main__:main"
 
 [project.urls]
-Homepage = "https://gitea.deathstar.anupamsg.com/acv/bangla-date"
+Homepage = "https://github.com/evolve75/bangla-date"
 Repository = "https://github.com/evolve75/bangla-date"
+Issues = "https://github.com/evolve75/bangla-date/issues"
+Changelog = "https://github.com/evolve75/bangla-date/blob/main/CHANGELOG.md"
 
 [dependency-groups]
 dev = [

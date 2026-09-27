@@ -19,20 +19,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from bangla_date._drik import _lahiri_ayanamsa  # noqa: E402
-
-_J2000_JULIAN_DAY = 2451545.0
+from bangla_date._drik import _J2000_JULIAN_DAY, _julian_day, _lahiri_ayanamsa  # noqa: E402
 
 # Swiss Ephemeris SE_SIDM_LAHIRI parameters (sweph.h):
 #   {2435553.5, 23.250182778 - 0.004658035, FALSE, SEMOD_PREC_IAU_1976}
 # from the Indian Astronomical Ephemeris 1989, p. 556.
 _SE_T0_JULIAN_DAY = 2435553.5
 _SE_AYAN_T0 = 23.250182778 - 0.004658035
-_ORDINAL_EPOCH_JULIAN_DAY = 1721424.5
-
-
-def _julian_day(year: int, month: int, day: int) -> float:
-    return date(year, month, day).toordinal() + _ORDINAL_EPOCH_JULIAN_DAY
 
 
 def _general_precession_arcseconds(centuries_from_j2000: float) -> float:
@@ -60,7 +53,7 @@ def main() -> None:
     worst = 0.0
     worst_year = 2000
     for year in range(2000, 2051):
-        julian_day = _julian_day(year, 1, 1)
+        julian_day = _julian_day(date(year, 1, 1))
         runtime = _lahiri_ayanamsa(julian_day)
         reference = _reference_lahiri_ayanamsa(julian_day)
         difference = abs(runtime - reference) * 3600.0
