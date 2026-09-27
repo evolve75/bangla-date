@@ -1,12 +1,13 @@
 ## বাংলা তারিখ রূপান্তরকারী (Bangla Date)
 
-এই প্রজেক্টটি বর্তমান গ্রেগরিয়ান তারিখকে বাংলা তারিখে রূপান্তর করে এবং সংশ্লিষ্ট ঋতুসহ বাংলা সংখ্যায় প্রদর্শন করে। এটি এখন একটি importable Python module এবং একটি সহজ CLI - দুটোই সরবরাহ করে।
+এই প্রজেক্টটি গ্রেগরিয়ান তারিখকে বাংলা তারিখে রূপান্তর করে এবং সংশ্লিষ্ট ঋতুসহ বাংলা সংখ্যায় প্রদর্শন করে। এটি একটি importable Python module এবং একটি সহজ CLI - দুটোই সরবরাহ করে।
 
 ### বৈশিষ্ট্যসমূহ
 
 - গ্রেগরিয়ান তারিখ থেকে বাংলা তারিখে রূপান্তর।
-- বাংলা মাস ও ঋতু নির্ণয়।
+- বাংলা মাস ও ঋতু নির্ণয় (২০১৯-পরবর্তী সংশোধিত বাংলাদেশি পঞ্জিকা অনুসারে)।
 - আউটপুটে বাংলা সংখ্যা ব্যবহার।
+- লিপ ইয়ারে ফাল্গুন মাসের অতিরিক্ত দিনের সঠিক হিসাব।
 
 ### প্রয়োজনীয়তা
 
@@ -14,10 +15,15 @@
 
 ### ইনস্টলেশন
 
-1. এই রিপোজিটরি ক্লোন করুন বা স্ক্রিপ্টটি ডাউনলোড করুন।
+1. এই রিপোজিটরি ক্লোন করুন।
 2. আপনার সিস্টেমে Python 3.13+ ইনস্টল করুন।
+3. ডেভেলপমেন্ট নির্ভরতাসহ পরিবেশ প্রস্তুত করুন:
 
-ঐচ্ছিকভাবে editable install করতে পারেন:
+```bash
+uv sync
+```
+
+`uv` ছাড়া ঐচ্ছিকভাবে editable install করতে পারেন:
 
 ```bash
 python3 -m pip install -e .
@@ -25,8 +31,7 @@ python3 -m pip install -e .
 
 ### ব্যবহারবিধি
 
-1. টার্মিনালে প্রজেক্টের অবস্থানে যান।
-2. নিচের যেকোনো একটি কমান্ড চালান:
+টার্মিনালে নিচের যেকোনো একটি কমান্ড চালান:
 
 ```bash
 python3 -m bangla_date
@@ -38,14 +43,20 @@ python3 -m bangla_date
 python3 bangla-date.py
 ```
 
-3. সাহায্য দেখতে চাইলে `--help` ব্যবহার করতে পারেন:
+ইনস্টল করা entrypoint থাকলে:
+
+```bash
+bangla-date
+```
+
+সাহায্য বা সংস্করণ দেখতে চাইলে:
 
 ```bash
 python3 -m bangla_date --help
-python3 bangla-date.py --help
+python3 -m bangla_date --version
 ```
 
-4. কমান্ডটি বর্তমান দিনের বাংলা তারিখ এবং ঋতু প্রদর্শন করবে।
+কমান্ডটি বর্তমান দিনের বাংলা তারিখ এবং ঋতু প্রদর্শন করবে।
 
 ### কাস্টম ইনপুট
 
@@ -54,8 +65,8 @@ python3 bangla-date.py --help
 ```python
 from datetime import datetime
 
-from bangla_date import gregorian_to_bangla_date
 from bangla_date import english_to_bangla_digits
+from bangla_date import gregorian_to_bangla_date
 
 # নির্দিষ্ট গ্রেগরিয়ান তারিখ
 gregorian_date = datetime(2024, 11, 10)
@@ -67,11 +78,33 @@ print(
 )
 ```
 
-Bangla-named function গুলোও backward compatibility এর জন্য রাখা হয়েছে:
+সরাসরি প্রস্তুত আউটপুট চাইলে `format_bangla_date` ব্যবহার করুন:
+
+```python
+from datetime import datetime
+
+from bangla_date import format_bangla_date
+
+print(format_bangla_date(datetime(2024, 11, 10)))
+```
+
+Bangla-named function গুলোও backward compatibility এর জন্য রাখা হয়েছে:
 
 ```python
 from bangla_date import গ্রেগরিয়ান_থেকে_বাংলা_তারিখ
 from bangla_date import ইংরেজি_থেকে_বাংলা_সংখ্যা
+```
+
+### টেস্ট
+
+```bash
+uv run pytest
+```
+
+`uv` ছাড়া standard library runner দিয়েও চালানো যায়:
+
+```bash
+python3 -m unittest discover -s tests
 ```
 
 ### অবদান

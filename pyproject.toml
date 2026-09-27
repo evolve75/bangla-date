@@ -1,18 +1,54 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "bangla-date"
-version = "1.0.0"
+dynamic = ["version"]
 description = "Convert Gregorian dates to Bangla dates and print the current Bangla date."
 authors = [{name = "Anupam Sengupta", email = "anupamsg@gmail.com"}]
 readme = "README.md"
 requires-python = ">=3.13"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["bangla", "bengali", "calendar", "date", "converter", "bongabdo"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
 dependencies = []
 
 [project.scripts]
 bangla-date = "bangla_date.__main__:main"
 
+[project.urls]
+Homepage = "https://gitea.deathstar.anupamsg.com/acv/bangla-date"
+Repository = "https://github.com/evolve75/bangla-date"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.16",
+]
+
 [tool.setuptools]
 packages = ["bangla_date"]
+
+[tool.setuptools.dynamic]
+version = {attr = "bangla_date.__version__"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "UP", "W"]

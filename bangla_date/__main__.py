@@ -8,31 +8,29 @@
 
 from __future__ import annotations
 
-import sys
+import argparse
 
-from bangla_date import format_current_bangla_date
+from bangla_date import __version__, format_current_bangla_date
 
-HELP_TEXT = """Print today's Bangla date and current season.
 
-Usage:
-  python3 -m bangla_date
-  python3 -m bangla_date --help
-  bangla-date
-"""
+def build_parser() -> argparse.ArgumentParser:
+    """Build the command-line argument parser."""
+    parser = argparse.ArgumentParser(
+        prog="bangla-date",
+        description="Print today's Bangla date and current season.",
+    )
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
+    )
+    return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     """Run the Bangla date command-line interface."""
-    args = sys.argv[1:] if argv is None else argv
-
-    if args in (["-h"], ["--help"]):
-        print(HELP_TEXT)
-        return 0
-
-    if args:
-        print(f"error: unrecognized arguments: {' '.join(args)}", file=sys.stderr)
-        print("Use --help to see supported options.", file=sys.stderr)
-        return 2
+    parser = build_parser()
+    parser.parse_args(argv)
 
     print(format_current_bangla_date())
     return 0
