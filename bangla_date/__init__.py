@@ -7,8 +7,9 @@
 
 from __future__ import annotations
 
-from calendar import isleap
 from datetime import date, datetime
+
+from bangla_date._drik import bangla_date_from_gregorian
 
 __version__ = "1.0.1"
 
@@ -31,53 +32,22 @@ SEASONS = ["গ্রীষ্ম", "বর্ষা", "শরৎ", "হেম�
 
 SEASON_BY_MONTH = {month: SEASONS[index // 2] for index, month in enumerate(BANGLA_MONTHS)}
 
-# Days in each Bangla month for a normal year, ordered Boishakh through Choitro.
-BANGLA_MONTH_DAYS = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 29, 30]
-
-BANGLA_NEW_YEAR_MONTH = 4
-BANGLA_NEW_YEAR_DAY = 14
-
 BANGLA_DIGITS = "০১২৩৪৫৬৭৮৯"
-
-_BS_YEAR_OFFSET = 593
-_FALGUN_INDEX = BANGLA_MONTHS.index("ফাল্গুন")
 
 
 def _as_date(value: date | datetime) -> date:
     return value.date() if isinstance(value, datetime) else value
 
 
-def _month_lengths(bangla_year: int) -> list[int]:
-    lengths = list(BANGLA_MONTH_DAYS)
-    if isleap(bangla_year + _BS_YEAR_OFFSET + 1):
-        lengths[_FALGUN_INDEX] = 30
-    return lengths
-
-
-def _locate_month(offset: int, lengths: list[int]) -> tuple[int, int]:
-    for index, length in enumerate(lengths):
-        if offset < length:
-            return index, offset + 1
-        offset -= length
-    raise ValueError("day offset out of range")
-
-
 def গ্রেগরিয়ান_থেকে_বাংলা_তারিখ(গ্রেগরিয়ান_তারিখ: date | datetime) -> tuple[int, str, int, str]:
     """Convert a Gregorian date into Bangla day, month, year, and season."""
     gregorian = _as_date(গ্রেগরিয়ান_তারিখ)
-    new_year = date(gregorian.year, BANGLA_NEW_YEAR_MONTH, BANGLA_NEW_YEAR_DAY)
+    bangla_day, month_index, bangla_year = bangla_date_from_gregorian(
+        gregorian.year, gregorian.month, gregorian.day
+    )
+    bangla_month = BANGLA_MONTHS[month_index]
 
-    if gregorian >= new_year:
-        বাংলা_বছর = gregorian.year - _BS_YEAR_OFFSET
-    else:
-        বাংলা_বছর = gregorian.year - _BS_YEAR_OFFSET - 1
-        new_year = date(gregorian.year - 1, BANGLA_NEW_YEAR_MONTH, BANGLA_NEW_YEAR_DAY)
-
-    offset = (gregorian - new_year).days
-    index, বাংলা_দিন = _locate_month(offset, _month_lengths(বাংলা_বছর))
-    বাংলা_মাস = BANGLA_MONTHS[index]
-
-    return বাংলা_দিন, বাংলা_মাস, বাংলা_বছর, SEASON_BY_MONTH[বাংলা_মাস]
+    return bangla_day, bangla_month, bangla_year, SEASON_BY_MONTH[bangla_month]
 
 
 def ইংরেজি_থেকে_বাংলা_সংখ্যা(সংখ্যা: int) -> str:
@@ -116,9 +86,6 @@ def format_current_bangla_date(now: datetime | None = None) -> str:
 __all__ = [
     "BANGLA_DIGITS",
     "BANGLA_MONTHS",
-    "BANGLA_MONTH_DAYS",
-    "BANGLA_NEW_YEAR_DAY",
-    "BANGLA_NEW_YEAR_MONTH",
     "SEASONS",
     "SEASON_BY_MONTH",
     "__version__",

@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Added
+- Added a West Bengal (Drik Siddhanta) calendar engine that determines solar months from the Sun's sidereal sign at local sunrise (reference location: Kolkata).
+
+### Changed
+- Changed date conversion from the previous fixed transition table to the West Bengal tradition, so month lengths now vary from 29 to 32 days.
+- Documented the formulas and citations in FORMULAS.md, and pinned reference generation to PyEphem 4.2.1.
+- Clarified the Lahiri ayanamsa and month-boundary wording, and added an offline Lahiri-fit check (`tools/check_lahiri_fit.py`).
+
+### Removed
+- Removed the fixed per-Gregorian-month transition table.
+
 ## v1.0.1 - 2026-07-17
 
 - Removed td workflow state and standardized local agent guidance on `features/*` branches.

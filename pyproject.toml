@@ -11,7 +11,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 license = "MIT"
 license-files = ["LICENSE"]
-keywords = ["bangla", "bengali", "calendar", "date", "converter", "bongabdo"]
+keywords = ["bangla", "bengali", "calendar", "date", "converter", "bangabda"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
