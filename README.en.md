@@ -8,7 +8,7 @@
 
 This project converts a Gregorian date into its Bangla date, and displays it in Bangla digits along with the corresponding season. It ships as both an importable Python module and a simple CLI.
 
-It uses the Bangla calendar (Drik Siddhanta) as followed in West Bengal; the month is determined by the Sun's sidereal sign at sunrise in Kolkata, so month lengths vary from 29 to 32 days. This is not equivalent to Bangladesh's 2019-revised national calendar.
+It uses the Bangla calendar ([Drik Siddhanta](https://en.wikipedia.org/wiki/Drigganita)) as followed in West Bengal; the month is determined by the Sun's sidereal sign at sunrise in Kolkata, so month lengths vary from 29 to 32 days. This is not equivalent to [Bangladesh's 2019-revised national calendar](https://bdnews24.com/lifestyle/bangladesh-reworks-bangla-calendar-to-match-national-days-with-west).
 
 ### Features
 
