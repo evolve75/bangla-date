@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=77"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "bangla-date"
@@ -37,11 +37,19 @@ dev = [
     "ruff>=0.16",
 ]
 
-[tool.setuptools]
+[tool.hatch.version]
+path = "bangla_date/__init__.py"
+
+[tool.hatch.build.targets.wheel]
 packages = ["bangla_date"]
 
-[tool.setuptools.dynamic]
-version = {attr = "bangla_date.__version__"}
+[tool.hatch.build.targets.sdist]
+include = [
+    "/bangla_date",
+    "/tests",
+    "/tools",
+    "/FORMULAS.md",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
