@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## v2.0.3 - 2026-09-27
+
+### Added
+- Added a PyPI publish workflow triggered on version tag pushes, using Trusted Publishing (OIDC), with tag/version verification and a `twine check` step before upload.
+
+### Changed
+- Pointed the `Homepage` project URL at the public GitHub repo instead of a private, unreachable Gitea mirror, and added `Issues`/`Changelog` project URLs.
+
+### Fixed
+- Removed duplicated Julian-day helper and epoch constants in `tools/check_lahiri_fit.py`; it now imports them from `bangla_date._drik`.
+- `format_current_bangla_date` now checks `now is None` explicitly instead of relying on `now or datetime.now()`.
+
 ## v2.0.2 - 2026-09-27
 
 ### Added
