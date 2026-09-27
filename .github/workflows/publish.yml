@@ -1,0 +1,48 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+
+      - name: Sync dependencies
+        run: uv sync --locked
+
+      - name: Test
+        run: uv run pytest
+
+      - name: Verify tag matches package version
+        run: |
+          tag_version="${GITHUB_REF_NAME#v}"
+          pkg_version="$(uv run python -c 'import bangla_date; print(bangla_date.__version__)')"
+          if [ "$tag_version" != "$pkg_version" ]; then
+            echo "Tag v$tag_version does not match bangla_date.__version__ ($pkg_version)" >&2
+            exit 1
+          fi
+
+      - name: Build
+        run: uv build
+
+      - name: Check distribution metadata
+        run: uv run --with twine twine check dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
